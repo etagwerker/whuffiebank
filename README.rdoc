@@ -4,7 +4,8 @@
 
 == DESCRIPTION:
 
-FIX (describe your package)
+This gem implements the thewhuffiebank.org API. WARNING: STILL UNDER DEVELOPMENT.
+
 
 == FEATURES/PROBLEMS:
 
