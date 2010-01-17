@@ -1,6 +1,6 @@
 module Whuffiebank
 
-  # This is the url_info class for the topsy library. 
+  # This is the Balance class for the whuffiebank library. 
   # 
   
   #   result - 'success' or 'failure'
@@ -14,7 +14,11 @@ module Whuffiebank
   #
   class Balance < Hashie::Mash
     def to_s
-      "Whuffiebank Balance: #{result}, #{balance}"
+      if result.eql? 'success'
+        "Whuffiebank Balance: #{result}, #{balance}"  
+      else
+        "Whuffiebank Balance: #{result}, #{reason}"
+      end
     end
   end
 end

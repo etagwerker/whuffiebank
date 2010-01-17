@@ -10,6 +10,23 @@ require 'httparty'
 
 module Whuffiebank
   VERSION = '0.0.1'
+  
+  class WhuffieError < StandardError
+    attr_reader :data
+
+    def initialize(data)
+      @data = data
+      super
+    end
+  end
+
+  class RateLimitExceeded < StandardError; end
+  class Unauthorized      < StandardError; end
+  class General           < WhuffieError; end
+
+  class Unavailable   < StandardError; end
+  class InformWhuffiebank < StandardError; end
+  class NotFound      < StandardError; end
 
   # Returns the balance for a combination of  username and password
   #
@@ -33,10 +50,19 @@ module Whuffiebank
   def self.give_whuffie(username,password,to_username,amount,options={})
     Whuffiebank::Client.new.give_whuffie(username,password,to_username,amount,options)      
   end
+  
+  # Returns the whuffie information for a username
+  #
+  # @param [String] username
+  # @return [Whuffiebank::Whuffie]
+  def self.whuffie(username)
+    Whuffiebank::Client.new.whuffie(username)      
+  end  
 
 end
 
 require File.join(directory, 'whuffiebank', 'balance')
 require File.join(directory, 'whuffiebank', 'give_response')
+require File.join(directory, 'whuffiebank', 'whuffie')
 
 require File.join(directory, 'whuffiebank', 'client')

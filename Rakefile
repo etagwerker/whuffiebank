@@ -1,26 +1,58 @@
 require 'rubygems'
-gem 'hoe', '>= 2.1.0'
-require 'hoe'
-require 'fileutils'
-require './lib/whuffiebank'
+require 'rake'
 
-Hoe.plugin :newgem
-# Hoe.plugin :website
-# Hoe.plugin :cucumberfeatures
+begin
+  require 'jeweler'
+  Jeweler::Tasks.new do |gem|
+    gem.name = "whuffiebank"
+    gem.summary = %Q{Ruby wrapper for the Whuffiebank API}
+    gem.description = %Q{Ruby wrapper for the Whuffiebank API}
+    gem.email = "etagwerker@gmail.com"
+    gem.homepage = "http://github.com/etagwerker/whuffiebank"
+    gem.authors = ["Ernesto Tagwerker"]
+    
+    gem.add_dependency('hashie', '~> 0.1.3')
+    gem.add_dependency('httparty', '~> 0.4.5')
 
-# Generate all the Rake tasks
-# Run 'rake -T' to see list of generated tasks (from gem root directory)
-$hoe = Hoe.spec 'whuffiebank' do
-  self.developer 'FIXME full name', 'FIXME email'
-  self.post_install_message = 'PostInstall.txt' # TODO remove if post-install message not required
-  self.rubyforge_name       = self.name # TODO this is default value
-  # self.extra_deps         = [['activesupport','>= 2.0.2']]
-
+    gem.add_development_dependency('thoughtbot-shoulda', '>= 2.10.1')
+    gem.add_development_dependency('jnunemaker-matchy', '0.4.0')
+    gem.add_development_dependency('mocha', '0.9.4')
+    gem.add_development_dependency('fakeweb', '>= 1.2.5')
+  end
+  Jeweler::GemcutterTasks.new
+rescue LoadError
+  puts "Jeweler (or a dependency) not available. Install it with: sudo gem install jeweler"
 end
 
-require 'newgem/tasks'
-Dir['tasks/**/*.rake'].each { |t| load t }
+require 'rake/testtask'
+Rake::TestTask.new(:test) do |test|
+  test.libs << 'lib' << 'test'
+  test.pattern = 'test/**/test_*.rb'
+  test.verbose = true
+end
 
-# TODO - want other tests/tasks run by default? Add them to the list
-# remove_task :default
-# task :default => [:spec, :features]
+begin
+  require 'rcov/rcovtask'
+  Rcov::RcovTask.new do |test|
+    test.libs << 'test'
+    test.pattern = 'test/**/test_*.rb'
+    test.verbose = true
+  end
+rescue LoadError
+  task :rcov do
+    abort "RCov is not available. In order to run rcov, you must: sudo gem install spicycode-rcov"
+  end
+end
+
+task :test => :check_dependencies
+
+task :default => :test
+
+begin
+  require 'yard'
+  YARD::Rake::YardocTask.new
+rescue LoadError
+  task :yardoc do
+    abort "YARD is not available. In order to run yardoc, you must: sudo gem install yard"
+  end
+end

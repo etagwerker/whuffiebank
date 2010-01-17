@@ -14,6 +14,11 @@ module Whuffiebank
       response = handle_response(self.class.post("/give/", :query => {:username => username, :password => password, :to => to_username, :amount => amount}.merge(options)))
       Whuffiebank::GiveResponse.new(response)
     end
+    
+    def whuffie(username)
+      response = handle_response(self.class.get("/whuffie/", :query => {:username => username} ))
+      Whuffiebank::Whuffie.new(response)
+    end
 
     private
 
