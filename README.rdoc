@@ -9,20 +9,18 @@ This gem implements the thewhuffiebank.org API. WARNING: STILL UNDER DEVELOPMENT
 
 == FEATURES/PROBLEMS:
 
-* FIX (list of features or problems)
+  >> Whuffiebank.give_whuffie('rtopsy','a_password','etagwerker',10)
+  => <#Whuffiebank::GiveResponse result="success">
 
->> Whuffiebank.give_whuffie('rtopsy','a_password','etagwerker',10)
-=> <#Whuffiebank::GiveResponse result="success">
+  >> Whuffiebank.balance('rtopsy','a_password')
+  => <#Whuffiebank::Balance balance=0 result="success">
 
->> Whuffiebank.balance('rtopsy','a_password')
-=> <#Whuffiebank::Balance balance=0 result="success">
-
->> Whuffiebank.whuffie('etagwerker')
-=> <#Whuffiebank::Whuffie ranking=293464 result="success" username="etagwerker" whuffie=125>
+  >> Whuffiebank.whuffie('etagwerker')
+  => <#Whuffiebank::Whuffie ranking=293464 result="success" username="etagwerker" whuffie=125>
 
 == INSTALL:
 
-sudo gem install whuffiebank
+  sudo gem install whuffiebank
 
 == LICENSE:
 
