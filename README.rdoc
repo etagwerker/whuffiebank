@@ -9,6 +9,9 @@ This gem implements the thewhuffiebank.org API.
 
 == FEATURES:
 
+  >> require 'whuffiebank'
+  => ["Whuffiebank"]
+
   >> Whuffiebank.give_whuffie('rtopsy','a_password','etagwerker',10)
   => <#Whuffiebank::GiveResponse result="success">
 
