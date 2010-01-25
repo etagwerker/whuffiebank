@@ -44,8 +44,8 @@ module Whuffiebank
   # @param [String] to_username
   # @param [String] amount
   # @param [Hash] options method options
-  #   :reason - Why are you giving whuffie to that user?
-  #   :alert - Send a messages using Twitter just after the payment. 
+  #   :reason - Why are you giving whuffie to that user? (String)
+  #   :alert - Send a messages using Twitter just after the payment. (1 or 0)  
   # @return [Whuffiebank::GiveResponse]
   def self.give_whuffie(username,password,to_username,amount,options={})
     Whuffiebank::Client.new.give_whuffie(username,password,to_username,amount,options)      

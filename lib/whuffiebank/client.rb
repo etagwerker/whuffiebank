@@ -11,7 +11,7 @@ module Whuffiebank
     end
     
     def give_whuffie(username,password,to_username,amount,options={})
-      response = handle_response(self.class.post("/give/", :body => {:username => username, :password => password, :to => to_username, :amount => amount}))
+      response = handle_response(self.class.post("/give/", :body => {:username => username, :password => password, :to => to_username, :amount => amount}.merge(options)))
       Whuffiebank::GiveResponse.new(response)
     end
     

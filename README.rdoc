@@ -24,6 +24,10 @@ This gem implements the thewhuffiebank.org API.
 == INSTALL:
 
   sudo gem install whuffiebank
+  
+== DOCUMENTATION: 
+
+* http://etagwerker.github.com/whuffiebank
 
 == LICENSE:
 
