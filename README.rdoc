@@ -1,13 +1,13 @@
-= whuffiebank
+== Whuffiebank API Ruby Gem
 
 * http://github.com/etagwerker/whuffiebank
 
 == DESCRIPTION:
 
-This gem implements the thewhuffiebank.org API. WARNING: STILL UNDER DEVELOPMENT.
+This gem implements the thewhuffiebank.org API.
 
 
-== FEATURES/PROBLEMS:
+== FEATURES:
 
   >> Whuffiebank.give_whuffie('rtopsy','a_password','etagwerker',10)
   => <#Whuffiebank::GiveResponse result="success">
