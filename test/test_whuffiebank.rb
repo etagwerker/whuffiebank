@@ -30,7 +30,7 @@ class TestWhuffiebank < Test::Unit::TestCase
     end
     
     should "give whuffie to a username and return success " do
-      stub_post('/give/?username=etagwerker&password=a_password&to=rtopsy&amount=12', 'give_whuffie.json')
+      stub_post('/give/?', 'give_whuffie.json')
       
       response = Whuffiebank.give_whuffie('etagwerker','a_password','rtopsy',12)
       
@@ -41,7 +41,7 @@ class TestWhuffiebank < Test::Unit::TestCase
     end
     
     should "return failure when trying to give whuffie " do
-      stub_post('/give/?username=etagwerker&password=bad_password&to=rtopsy&amount=12', 'give_whuffie_error.json')
+      stub_post('/give/?', 'give_whuffie_error.json')
       
       response = Whuffiebank.give_whuffie('etagwerker','bad_password','rtopsy',12)
       
